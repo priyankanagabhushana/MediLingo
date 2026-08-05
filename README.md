@@ -163,7 +163,7 @@ Health check:
 
 The local Docker image is medilingo:local. It contains both LoRA adapters, uses the Streamlit health endpoint, and has been tested with a local container health check. See CLOUD_RUN.md.
 
-GCP deployment was not performed because a project, billing account, region, credentials, and deployment policy were not supplied. The Dockerfile and Cloud Run notes are deployment-ready but production deployment still needs authentication, audit logging, resource sizing, and a review of whether a 4B model belongs on Cloud Run GPU or a dedicated inference host.
+The public MediLingo demo is deployed and verified at https://medilingo-osqskujnua-ez.a.run.app. It uses Cloud Run Gen2 in project `retailmind-497115` and region `europe-west4`, with one NVIDIA L4 GPU, 4 vCPUs, and 16 GiB RAM. The service is public, capped at one instance, and configured with zero minimum instances so it scales down when idle. Streamlit uses concurrency 80 so its parallel static assets load correctly. The first request after scale-to-zero can take several minutes while the image and Qwen3 model initialize. Production use would still need authentication, audit logging, request limits, data retention controls, and human review.
 
 ## Interview framing
 

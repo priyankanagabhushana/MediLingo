@@ -1,8 +1,16 @@
 # Cloud Run handoff
 
-This project is packaged for a later Cloud Run deployment. No GCP project, billing
-account, region, or credentials were supplied, so deployment is intentionally not
-performed by the Thor run.
+The public demo is deployed in Google Cloud project `retailmind-497115`.
+
+- Public URL: https://medilingo-osqskujnua-ez.a.run.app
+- Service: `medilingo`, region `europe-west4`
+- Image: Artifact Registry tag `medilingo:cloud-100k`
+- Runtime: Cloud Run Gen2, one NVIDIA L4 GPU, 4 vCPUs, 16 GiB RAM
+- Scaling: service minimum 0 and service maximum 1 instance; container concurrency 80
+- Access: unauthenticated public invocation; zonal GPU redundancy disabled because the project had no redundancy quota
+
+The image includes the public Qwen3-4B base checkpoint, the 100k LoRA adapter,
+the 100k local retrieval index, and the multilingual embedding model. No
 
 ## Local validation
 
