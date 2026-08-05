@@ -1,0 +1,4 @@
+condition,examples,chrf,bleu,number_preservation_rate,unit_preservation_rate,dosage_preservation_rate,medicine_name_preservation_rate,negation_preservation_rate,warning_preservation_rate,warning_rate,rag_used_rate,retrieval_no_evidence_rate,entity_conflicts_filtered,avg_best_raw_similarity,elapsed_seconds,seconds_per_example
+base,400,60.0740215512238,30.595030793825334,0.9925,0.8325,1.0,0.695,0.995,0.9725,0.375,0.0,0.0,0,,661.155,1.653
+sft,400,69.29557859813333,43.73576342663574,0.965,0.8625,0.9875,0.6925,0.995,0.9725,0.3925,0.0,0.0,0,,770.403,1.926
+rag,400,78.67292274330327,59.87228494082227,0.965,0.86,0.985,0.69,0.9925,0.9725,0.3975,0.9925,0.0075,1718,0.9179,824.759,2.062

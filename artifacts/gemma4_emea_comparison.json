@@ -1,0 +1,63 @@
+{
+  "created_at_utc": "2026-08-05T04:28:41.740240+00:00",
+  "model": "gemma4",
+  "model_id": "google/gemma-4-E2B-it",
+  "dataset": "emea",
+  "rows": 50,
+  "conditions": {
+    "base": {
+      "created_at_utc": "2026-08-05T04:30:30.554399+00:00",
+      "condition": "base",
+      "examples": 50,
+      "chrf": 61.11253617555709,
+      "bleu": 36.38122630588284,
+      "number_preservation_rate": 0.98,
+      "unit_preservation_rate": 0.78,
+      "negation_preservation_rate": 1.0,
+      "medicine_name_preservation_rate": 0.84,
+      "dosage_preservation_rate": 1.0,
+      "warning_preservation_rate": 0.98,
+      "warning_rate": 0.34,
+      "elapsed_seconds": 108.584,
+      "seconds_per_example": 2.172,
+      "metric_error": null,
+      "outputs_path": "/home/sreenath/research-space/SovereignMedTranslate/artifacts/gemma4_emea_base_outputs.jsonl"
+    },
+    "sft": {
+      "created_at_utc": "2026-08-05T04:32:33.884335+00:00",
+      "condition": "sft",
+      "examples": 50,
+      "chrf": 65.25456680949269,
+      "bleu": 43.607605730811116,
+      "number_preservation_rate": 0.98,
+      "unit_preservation_rate": 0.78,
+      "negation_preservation_rate": 1.0,
+      "medicine_name_preservation_rate": 0.84,
+      "dosage_preservation_rate": 1.0,
+      "warning_preservation_rate": 0.98,
+      "warning_rate": 0.32,
+      "elapsed_seconds": 123.153,
+      "seconds_per_example": 2.463,
+      "metric_error": null,
+      "outputs_path": "/home/sreenath/research-space/SovereignMedTranslate/artifacts/gemma4_emea_sft_outputs.jsonl"
+    },
+    "rag": {
+      "created_at_utc": "2026-08-05T04:34:47.113125+00:00",
+      "condition": "rag",
+      "examples": 50,
+      "chrf": 68.45872101939403,
+      "bleu": 47.84220474866133,
+      "number_preservation_rate": 0.98,
+      "unit_preservation_rate": 0.78,
+      "negation_preservation_rate": 1.0,
+      "medicine_name_preservation_rate": 0.84,
+      "dosage_preservation_rate": 1.0,
+      "warning_preservation_rate": 0.98,
+      "warning_rate": 0.34,
+      "elapsed_seconds": 133.059,
+      "seconds_per_example": 2.661,
+      "metric_error": null,
+      "outputs_path": "/home/sreenath/research-space/SovereignMedTranslate/artifacts/gemma4_emea_rag_outputs.jsonl"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "created_at_utc": "2026-08-05T01:30:00+00:00",
+  "model_id": "google/gemma-4-E2B-it",
+  "hf_token_in_ssh_env": false,
+  "initial_smoke": {
+    "status": "failed",
+    "stage": "get_peft_model",
+    "error": "ValueError: Target module Gemma4ClippableLinear is not supported by the installed PEFT backend",
+    "log": "logs/gemma4_smoke.log"
+  },
+  "fixed_smoke": {
+    "status": "passed",
+    "steps": 1,
+    "adapter_dir": "models/gemma4-smoke2",
+    "trainable_parameters": 24158208,
+    "all_parameters": 5128455712,
+    "target_scope": "native torch.nn.Linear modules under model.language_model.layers",
+    "log": "logs/gemma4_smoke2.log"
+  },
+  "full_pilot": {
+    "status": "completed",
+    "global_step": 3000,
+    "train_examples": 50000,
+    "validation_examples": 256,
+    "train_loss": 0.8309411703745524,
+    "eval_loss": 0.7524,
+    "train_runtime_seconds": 9208.4167,
+    "pid_file": "logs/gemma4_training.pid",
+    "log": "logs/gemma4_training.log",
+    "adapter_dir": "models/gemma4-e2b-medical-lora",
+    "metadata": "models/gemma4-e2b-medical-lora/training_metadata.json"
+  },
+  "evaluation": {
+    "prompt_version": "delimited_reference_v2",
+    "test": "artifacts/gemma4_test_comparison.json",
+    "emea": "artifacts/gemma4_emea_comparison.json",
+    "test_initial_prompt_snapshot": "artifacts/gemma4_test_comparison_initial_prompt.json"
+  }
+}

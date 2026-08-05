@@ -1,0 +1,45 @@
+project:
+  name: MediLingo
+  root: /home/sreenath/research-space/SovereignMedTranslate
+  seed: 42
+
+models:
+  qwen3:
+    id: Qwen/Qwen3-4B
+    adapter_dir: models/qwen3-4b-medical-lora
+  gemma4:
+    id: google/gemma-4-E2B-it
+    adapter_dir: models/gemma4-e2b-medical-lora
+
+data:
+  training_dataset: ahazeemi/opus-medical-en-de
+  emea_dataset: qanastek/EMEA-V3
+  max_train_examples: 50000
+  expanded_train_examples: 100000
+  max_emea_examples: 2000
+  max_length: 1024
+
+training:
+  max_steps: 3000
+  epochs: 1
+  batch_size: 1
+  gradient_accumulation_steps: 8
+  learning_rate: 0.0002
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  eval_steps: 250
+  save_steps: 500
+
+rag:
+  embedding_model: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+  top_k: 4
+  glossary_top_k: 8
+  max_index_examples: 50000
+  expanded_index_examples: 100000
+  similarity_threshold: 0.65
+  entity_filter: true
+
+evaluation:
+  max_examples: 400
+  generation_max_new_tokens: 256

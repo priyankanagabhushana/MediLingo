@@ -1,0 +1,72 @@
+{
+  "created_at_utc": "2026-08-04T22:35:08.322083+00:00",
+  "project_root": "/home/sreenath/research-space/SovereignMedTranslate",
+  "ahazeemi": {
+    "dataset_id": "ahazeemi/opus-medical-en-de",
+    "source_type": "ahazeemi_processed",
+    "downloaded_at_utc": "2026-08-04T22:34:39.388831+00:00",
+    "splits": {
+      "train": {
+        "status": "saved",
+        "rows": 248099,
+        "path": "/home/sreenath/research-space/SovereignMedTranslate/data/raw/ahazeemi_processed/train.jsonl",
+        "sha256": "9e3a6be30043404fbe904c520b30d2f190cab0b3175f6824115f9eeb6cdf0b02"
+      },
+      "validation": {
+        "status": "unavailable",
+        "error": "ValueError('Unknown split \"validation\". Should be one of [\\'train\\', \\'test\\', \\'dev\\'].')"
+      },
+      "dev": {
+        "status": "saved",
+        "rows": 2000,
+        "path": "/home/sreenath/research-space/SovereignMedTranslate/data/raw/ahazeemi_processed/dev.jsonl",
+        "sha256": "10c57b1ed2a49a1e355763f6b0c30f24f1ee005cec4f06fcac4360c82cdd0679"
+      },
+      "test": {
+        "status": "saved",
+        "rows": 2000,
+        "path": "/home/sreenath/research-space/SovereignMedTranslate/data/raw/ahazeemi_processed/test.jsonl",
+        "sha256": "107bd4828bc2487d8d34d8c11b7e17e6a181f30dd213f94e0399437f382a1f75"
+      }
+    },
+    "readme": {
+      "status": "saved",
+      "path": "/home/sreenath/research-space/SovereignMedTranslate/data/raw/ahazeemi_processed/README.md"
+    }
+  },
+  "emea_raw": {
+    "source_type": "emea_raw_or_opus",
+    "opus_page": "https://opus.nlpl.eu/datasets/EMEA",
+    "downloaded_at_utc": "2026-08-04T22:34:50.586690+00:00",
+    "attempts": [
+      {
+        "url": "https://object.pouta.csc.fi/OPUS-EMEA/v3/moses/de-en.txt.zip",
+        "destination": "/home/sreenath/research-space/SovereignMedTranslate/data/raw/emea_opus/moses_en_de.zip",
+        "status": "downloaded",
+        "bytes": 35952852,
+        "sha256": "47c11eff604996cf6f1fe3aabb9c8e2dd650ff51d947c6d46a7b2247f47aab9b"
+      }
+    ],
+    "parsed": {
+      "archive": "/home/sreenath/research-space/SovereignMedTranslate/data/raw/emea_opus/moses_en_de.zip",
+      "status": "saved",
+      "source_member": "EMEA.de-en.en",
+      "target_member": "EMEA.de-en.de",
+      "rows": 1108752,
+      "path": "/home/sreenath/research-space/SovereignMedTranslate/data/raw/emea_opus/emea_en_de.jsonl",
+      "sha256": "c18424a660f8e320f06204aaaabd5ef5cf689834b73a3ef671de89a0a95c630d"
+    },
+    "xces_xml": {
+      "url": "https://object.pouta.csc.fi/OPUS-EMEA/v3/xml/de-en.xml.gz",
+      "path": "/home/sreenath/research-space/SovereignMedTranslate/data/raw/emea_opus/xml_de_en.xml.gz",
+      "status": "downloaded",
+      "bytes": 14239788,
+      "sha256": "eb4088993f2617a90ee268865ccf5c4af3a3473d49df1a2de8d82184df261afb",
+      "note": "XCES XML with document/link metadata; used for provenance inspection."
+    }
+  },
+  "emea_fallback": {
+    "status": "not_needed",
+    "note": "Raw OPUS EMEA rows available."
+  }
+}

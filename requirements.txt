@@ -1,0 +1,7 @@
+# The Thor system already provides CUDA-enabled PyTorch, Transformers, PEFT,
+# Accelerate, Datasets, SentenceTransformers, and Streamlit. Install this file
+# only inside the project-local virtual environment.
+sacrebleu>=2.4,<3
+PyYAML>=6.0
+tqdm>=4.66
+requests>=2.31

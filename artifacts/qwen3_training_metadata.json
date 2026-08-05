@@ -1,0 +1,37 @@
+{
+  "created_at_utc": "2026-08-05T01:08:46.392266+00:00",
+  "model_name": "qwen3",
+  "model_id": "Qwen/Qwen3-4B",
+  "output_dir": "/home/sreenath/research-space/SovereignMedTranslate/models/qwen3-4b-medical-lora",
+  "train_examples": 50000,
+  "validation_examples": 256,
+  "max_steps": 3000,
+  "max_length": 1024,
+  "seed": 42,
+  "lora": {
+    "r": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": [
+      "down_proj",
+      "gate_proj",
+      "k_proj",
+      "o_proj",
+      "q_proj",
+      "up_proj",
+      "v_proj"
+    ]
+  },
+  "training_result": {
+    "global_step": 3000,
+    "training_loss": 0.6924797989527385,
+    "metrics": {
+      "train_runtime": 8383.0809,
+      "train_samples_per_second": 2.863,
+      "train_steps_per_second": 0.358,
+      "total_flos": 7.316401393536e+16,
+      "train_loss": 0.6924797989527385,
+      "epoch": 0.48
+    }
+  }
+}

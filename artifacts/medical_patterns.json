@@ -1,0 +1,9 @@
+{
+  "numbers": "(?<!\\w)\\d+(?:[.,]\\d+)?(?:\\s?[-–]\\s?\\d+)?(?!\\w)",
+  "units": "mg, g, kg, mcg, µg, ml, mL, l, %, mmHg, mmol, mol, tablets, capsules, drops, days, hours, weeks",
+  "english_negation": "not, no, without, never, must not, do not, cannot, contraindicated",
+  "german_negation": "nicht, kein, keine, keinen, ohne, niemals, verboten, untersagt",
+  "dosage": "numeric expressions paired with medical units or tablet/capsule/drop counts",
+  "warnings": "warning, caution, do not take/use, keep out of reach, contraindicated, allergic, side effects",
+  "medicine_names": "conservative drug-like suffix/product-name heuristic; not a clinical NER model"
+}

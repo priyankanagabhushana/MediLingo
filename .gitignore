@@ -1,0 +1,33 @@
+# MediLingo local artifacts
+.venv/
+.cache/
+__pycache__/
+*.pyc
+*.log
+.env
+
+# Local datasets are downloaded/prepared on the experiment machine and are
+# intentionally not committed to GitHub.
+data/*
+!data/
+!data/README.md
+
+# Model weights and training checkpoints stay on Thor or in a model registry.
+models/
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# Runtime logs, process markers, caches and temporary QA files.
+logs/
+tmp/
+*.pid
+*.cid
+
+# Generated retrieval payloads and per-example generations can be rebuilt.
+artifacts/rag/
+artifacts/rag_100k/
+artifacts/*_outputs.jsonl
+artifacts/*.jsonl
+artifacts/examples.json

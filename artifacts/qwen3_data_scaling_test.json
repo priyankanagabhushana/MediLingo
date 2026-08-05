@@ -1,0 +1,195 @@
+{
+  "created_at_utc": "2026-08-05T14:38:40.583595+00:00",
+  "baseline": "/home/sreenath/research-space/SovereignMedTranslate/artifacts/qwen3_50k_gated400_test_comparison.json",
+  "expanded": "/home/sreenath/research-space/SovereignMedTranslate/artifacts/qwen3_100k_gated400_test_comparison.json",
+  "baseline_rows": 400,
+  "expanded_rows": 400,
+  "conditions": {
+    "base": {
+      "chrf": {
+        "baseline": 55.30111973872434,
+        "expanded": 55.30111973872434,
+        "delta": 0.0
+      },
+      "bleu": {
+        "baseline": 29.90005513371611,
+        "expanded": 29.90005513371611,
+        "delta": 0.0
+      },
+      "number_preservation_rate": {
+        "baseline": 0.9775,
+        "expanded": 0.9775,
+        "delta": 0.0
+      },
+      "unit_preservation_rate": {
+        "baseline": 0.875,
+        "expanded": 0.875,
+        "delta": 0.0
+      },
+      "dosage_preservation_rate": {
+        "baseline": 0.9925,
+        "expanded": 0.9925,
+        "delta": 0.0
+      },
+      "medicine_name_preservation_rate": {
+        "baseline": 0.8525,
+        "expanded": 0.8525,
+        "delta": 0.0
+      },
+      "negation_preservation_rate": {
+        "baseline": 0.9925,
+        "expanded": 0.9925,
+        "delta": 0.0
+      },
+      "warning_preservation_rate": {
+        "baseline": 0.9675,
+        "expanded": 0.9675,
+        "delta": 0.0
+      },
+      "rag_used_rate": {
+        "baseline": 0.0,
+        "expanded": 0.0,
+        "delta": 0.0
+      },
+      "retrieval_no_evidence_rate": {
+        "baseline": 0.0,
+        "expanded": 0.0,
+        "delta": 0.0
+      },
+      "entity_conflicts_filtered": {
+        "baseline": 0,
+        "expanded": 0,
+        "delta": 0
+      },
+      "seconds_per_example": {
+        "baseline": 1.655,
+        "expanded": 1.662,
+        "delta": 0.007
+      }
+    },
+    "rag": {
+      "chrf": {
+        "baseline": 64.87927713459783,
+        "expanded": 67.05600626847684,
+        "delta": 2.176729
+      },
+      "bleu": {
+        "baseline": 44.060942592787974,
+        "expanded": 45.99485967026761,
+        "delta": 1.933917
+      },
+      "number_preservation_rate": {
+        "baseline": 0.9275,
+        "expanded": 0.925,
+        "delta": -0.0025
+      },
+      "unit_preservation_rate": {
+        "baseline": 0.8875,
+        "expanded": 0.8825,
+        "delta": -0.005
+      },
+      "dosage_preservation_rate": {
+        "baseline": 0.99,
+        "expanded": 0.9875,
+        "delta": -0.0025
+      },
+      "medicine_name_preservation_rate": {
+        "baseline": 0.855,
+        "expanded": 0.85,
+        "delta": -0.005
+      },
+      "negation_preservation_rate": {
+        "baseline": 0.995,
+        "expanded": 0.995,
+        "delta": 0.0
+      },
+      "warning_preservation_rate": {
+        "baseline": 0.97,
+        "expanded": 0.97,
+        "delta": 0.0
+      },
+      "rag_used_rate": {
+        "baseline": 0.8775,
+        "expanded": 0.93,
+        "delta": 0.0525
+      },
+      "retrieval_no_evidence_rate": {
+        "baseline": 0.1325,
+        "expanded": 0.075,
+        "delta": -0.0575
+      },
+      "entity_conflicts_filtered": {
+        "baseline": 6312,
+        "expanded": 4308,
+        "delta": -2004
+      },
+      "seconds_per_example": {
+        "baseline": 2.099,
+        "expanded": 2.2,
+        "delta": 0.101
+      }
+    },
+    "sft": {
+      "chrf": {
+        "baseline": 62.63911303998969,
+        "expanded": 63.91093812388947,
+        "delta": 1.271825
+      },
+      "bleu": {
+        "baseline": 38.57575679675408,
+        "expanded": 39.657984603727975,
+        "delta": 1.082228
+      },
+      "number_preservation_rate": {
+        "baseline": 0.93,
+        "expanded": 0.9325,
+        "delta": 0.0025
+      },
+      "unit_preservation_rate": {
+        "baseline": 0.8825,
+        "expanded": 0.8825,
+        "delta": 0.0
+      },
+      "dosage_preservation_rate": {
+        "baseline": 0.985,
+        "expanded": 0.9825,
+        "delta": -0.0025
+      },
+      "medicine_name_preservation_rate": {
+        "baseline": 0.8575,
+        "expanded": 0.8525,
+        "delta": -0.005
+      },
+      "negation_preservation_rate": {
+        "baseline": 0.995,
+        "expanded": 0.9925,
+        "delta": -0.0025
+      },
+      "warning_preservation_rate": {
+        "baseline": 0.97,
+        "expanded": 0.97,
+        "delta": 0.0
+      },
+      "rag_used_rate": {
+        "baseline": 0.0,
+        "expanded": 0.0,
+        "delta": 0.0
+      },
+      "retrieval_no_evidence_rate": {
+        "baseline": 0.0,
+        "expanded": 0.0,
+        "delta": 0.0
+      },
+      "entity_conflicts_filtered": {
+        "baseline": 0,
+        "expanded": 0,
+        "delta": 0
+      },
+      "seconds_per_example": {
+        "baseline": 2.015,
+        "expanded": 2.031,
+        "delta": 0.016
+      }
+    }
+  }
+}

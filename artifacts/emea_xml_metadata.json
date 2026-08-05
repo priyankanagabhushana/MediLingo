@@ -1,0 +1,51 @@
+{
+  "created_at_utc": "2026-08-04T22:38:12.753836+00:00",
+  "xml_path": "/home/sreenath/research-space/SovereignMedTranslate/data/raw/emea_opus/xml_de_en.xml.gz",
+  "xces_link_groups": 1939,
+  "xces_links": 1163348,
+  "unique_to_documents": 1939,
+  "sample_document_pairs": [
+    {
+      "toDoc": "en/humandocs/PDFs/EPAR/abilify/089304en1.xml.gz",
+      "fromDoc": "de/humandocs/PDFs/EPAR/abilify/089304de1.xml.gz"
+    },
+    {
+      "toDoc": "en/humandocs/PDFs/EPAR/abilify/089304en2.xml.gz",
+      "fromDoc": "de/humandocs/PDFs/EPAR/abilify/089304de2.xml.gz"
+    },
+    {
+      "toDoc": "en/humandocs/PDFs/EPAR/abilify/H-471-PI-en.xml.gz",
+      "fromDoc": "de/humandocs/PDFs/EPAR/abilify/H-471-PI-de.xml.gz"
+    },
+    {
+      "toDoc": "en/humandocs/PDFs/EPAR/abraxane/H-778-en1.xml.gz",
+      "fromDoc": "de/humandocs/PDFs/EPAR/abraxane/H-778-de1.xml.gz"
+    },
+    {
+      "toDoc": "en/humandocs/PDFs/EPAR/abraxane/H-778-en2.xml.gz",
+      "fromDoc": "de/humandocs/PDFs/EPAR/abraxane/H-778-de2.xml.gz"
+    },
+    {
+      "toDoc": "en/humandocs/PDFs/EPAR/abraxane/H-778-PI-en.xml.gz",
+      "fromDoc": "de/humandocs/PDFs/EPAR/abraxane/H-778-PI-de.xml.gz"
+    },
+    {
+      "toDoc": "en/humandocs/PDFs/EPAR/abseamed/H-727-Annex-en.xml.gz",
+      "fromDoc": "de/humandocs/PDFs/EPAR/abseamed/H-727-Annex-de.xml.gz"
+    },
+    {
+      "toDoc": "en/humandocs/PDFs/EPAR/abseamed/H-727-en1.xml.gz",
+      "fromDoc": "de/humandocs/PDFs/EPAR/abseamed/H-727-de1.xml.gz"
+    },
+    {
+      "toDoc": "en/humandocs/PDFs/EPAR/abseamed/H-727-en2.xml.gz",
+      "fromDoc": "de/humandocs/PDFs/EPAR/abseamed/H-727-de2.xml.gz"
+    },
+    {
+      "toDoc": "en/humandocs/PDFs/EPAR/abseamed/H-727-PI-en.xml.gz",
+      "fromDoc": "de/humandocs/PDFs/EPAR/abseamed/H-727-PI-de.xml.gz"
+    }
+  ],
+  "document_metadata_available_in_raw_xces": true,
+  "plain_text_alignment_warning": "The Moses plain-text rows do not have a guaranteed one-to-one order with all XCES links because the XCES contains one-to-many/many-to-one alignments. Document-level splitting requires reconstructing rows from the raw XML documents."
+}

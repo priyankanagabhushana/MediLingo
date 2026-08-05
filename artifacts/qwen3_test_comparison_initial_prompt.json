@@ -1,0 +1,63 @@
+{
+  "created_at_utc": "2026-08-05T01:11:41.325891+00:00",
+  "model": "qwen3",
+  "model_id": "Qwen/Qwen3-4B",
+  "dataset": "test",
+  "rows": 50,
+  "conditions": {
+    "base": {
+      "created_at_utc": "2026-08-05T01:13:31.267545+00:00",
+      "condition": "base",
+      "examples": 50,
+      "chrf": 56.12011511713446,
+      "bleu": 34.952316336703355,
+      "number_preservation_rate": 0.98,
+      "unit_preservation_rate": 0.82,
+      "negation_preservation_rate": 0.96,
+      "medicine_name_preservation_rate": 0.94,
+      "dosage_preservation_rate": 1.0,
+      "warning_preservation_rate": 0.94,
+      "warning_rate": 0.28,
+      "elapsed_seconds": 109.7,
+      "seconds_per_example": 2.194,
+      "metric_error": null,
+      "outputs_path": "/home/sreenath/research-space/SovereignMedTranslate/artifacts/qwen3_test_base_outputs.jsonl"
+    },
+    "sft": {
+      "created_at_utc": "2026-08-05T01:15:33.181199+00:00",
+      "condition": "sft",
+      "examples": 50,
+      "chrf": 60.15954554334204,
+      "bleu": 34.64274809426894,
+      "number_preservation_rate": 0.94,
+      "unit_preservation_rate": 0.84,
+      "negation_preservation_rate": 0.96,
+      "medicine_name_preservation_rate": 0.92,
+      "dosage_preservation_rate": 1.0,
+      "warning_preservation_rate": 0.94,
+      "warning_rate": 0.3,
+      "elapsed_seconds": 121.731,
+      "seconds_per_example": 2.435,
+      "metric_error": null,
+      "outputs_path": "/home/sreenath/research-space/SovereignMedTranslate/artifacts/qwen3_test_sft_outputs.jsonl"
+    },
+    "rag": {
+      "created_at_utc": "2026-08-05T01:17:51.149120+00:00",
+      "condition": "rag",
+      "examples": 50,
+      "chrf": 61.66656267014729,
+      "bleu": 38.02168417785614,
+      "number_preservation_rate": 0.96,
+      "unit_preservation_rate": 0.84,
+      "negation_preservation_rate": 0.96,
+      "medicine_name_preservation_rate": 0.9,
+      "dosage_preservation_rate": 1.0,
+      "warning_preservation_rate": 0.94,
+      "warning_rate": 0.32,
+      "elapsed_seconds": 137.793,
+      "seconds_per_example": 2.756,
+      "metric_error": null,
+      "outputs_path": "/home/sreenath/research-space/SovereignMedTranslate/artifacts/qwen3_test_rag_outputs.jsonl"
+    }
+  }
+}

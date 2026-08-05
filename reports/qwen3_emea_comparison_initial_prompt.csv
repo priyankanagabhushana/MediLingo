@@ -1,0 +1,4 @@
+condition,examples,chrf,bleu,number_preservation_rate,unit_preservation_rate,dosage_preservation_rate,medicine_name_preservation_rate,negation_preservation_rate,warning_preservation_rate,warning_rate,elapsed_seconds,seconds_per_example
+base,50,56.96113028400248,33.663438159223325,1.0,0.78,1.0,0.84,1.0,0.98,0.32,102.31,2.046
+sft,50,64.89562569429933,44.128203895929545,0.94,0.78,1.0,0.84,1.0,0.98,0.36,110.986,2.22
+rag,50,68.11886021388258,49.21021928072785,0.96,0.78,1.0,0.84,1.0,0.98,0.34,124.928,2.499

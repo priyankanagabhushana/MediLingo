@@ -1,0 +1,15 @@
+# Keep training environments, data, caches, logs, and reports out of the runtime image.
+.venv
+.cache
+data
+logs
+reports
+__pycache__
+*.pyc
+models/*
+!models/qwen3-4b-medical-lora/
+!models/qwen3-4b-medical-lora/**
+!models/qwen3-4b-medical-lora-100k/
+!models/qwen3-4b-medical-lora-100k/**
+!models/gemma4-e2b-medical-lora/
+!models/gemma4-e2b-medical-lora/**

@@ -1,0 +1,9 @@
+{
+  "status": "complete",
+  "adapter": "/home/sreenath/research-space/SovereignMedTranslate/models/qwen3-4b-medical-lora-100k",
+  "test_comparison": "/home/sreenath/research-space/SovereignMedTranslate/artifacts/qwen3_100k_gated400_test_comparison.json",
+  "emea_comparison": "/home/sreenath/research-space/SovereignMedTranslate/artifacts/qwen3_100k_gated400_emea_comparison.json",
+  "test_scaling_report": "/home/sreenath/research-space/SovereignMedTranslate/reports/qwen3_data_scaling_test.md",
+  "emea_scaling_report": "/home/sreenath/research-space/SovereignMedTranslate/reports/qwen3_data_scaling_emea.md",
+  "ui_health": "http://127.0.0.1:8511/_stcore/health"
+}

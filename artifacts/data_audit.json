@@ -1,0 +1,51 @@
+{
+  "seed": 42,
+  "training_policy": "deterministic shuffle seed 42, capped at 50000 examples",
+  "ahazeemi": {
+    "train": {
+      "input_rows": 248099,
+      "output_rows": 247664,
+      "exact_duplicate_rows_removed": 435,
+      "repeated_source_strings": 1383
+    },
+    "dev": {
+      "input_rows": 2000,
+      "output_rows": 2000,
+      "exact_duplicate_rows_removed": 0,
+      "repeated_source_strings": 0
+    },
+    "test": {
+      "input_rows": 2000,
+      "output_rows": 2000,
+      "exact_duplicate_rows_removed": 0,
+      "repeated_source_strings": 0
+    },
+    "selected_train_rows": 50000,
+    "selected_dev_rows": 2000,
+    "selected_test_rows": 2000,
+    "train_near_duplicate_sample": {
+      "sample_size": 500,
+      "near_duplicate_pairs": 0,
+      "pairs": []
+    }
+  },
+  "emea": {
+    "source_type": "emea_raw_or_opus",
+    "rows": 2000,
+    "audit": {
+      "input_rows": 1108752,
+      "output_rows": 361733,
+      "exact_duplicate_rows_removed": 747019,
+      "repeated_source_strings": 118344
+    },
+    "document_id_available": false,
+    "document_id_count": 0,
+    "split_policy": "sentence-level external evaluation; document IDs were not exposed"
+  },
+  "files": {
+    "train": "/home/sreenath/research-space/SovereignMedTranslate/data/processed/ahazeemi_train.jsonl",
+    "dev": "/home/sreenath/research-space/SovereignMedTranslate/data/processed/ahazeemi_dev.jsonl",
+    "test": "/home/sreenath/research-space/SovereignMedTranslate/data/processed/ahazeemi_test.jsonl",
+    "emea": "/home/sreenath/research-space/SovereignMedTranslate/data/processed/emea_external.jsonl"
+  }
+}
