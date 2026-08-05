@@ -27,19 +27,7 @@ RUN python -m pip install --no-cache-dir --upgrade pip \
 
 # Bake public model assets into the image. This removes the HF download from
 # the first user request. No access token is stored in the image.
-RUN python - <<'PY'
-from huggingface_hub import snapshot_download
-
-snapshot_download(
-    repo_id="Qwen/Qwen3-4B",
-    local_dir="/opt/models/qwen3-4b",
-    allow_patterns=["*.json", "*.jinja", "*.safetensors", "*.txt"],
-)
-snapshot_download(
-    repo_id="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
-    local_dir="/opt/models/embedding",
-)
-PY
+RUN python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='Qwen/Qwen3-4B', local_dir='/opt/models/qwen3-4b', allow_patterns=['*.json', '*.jinja', '*.safetensors', '*.txt']); snapshot_download(repo_id='sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2', local_dir='/opt/models/embedding')"
 
 COPY scripts ./scripts
 COPY ui ./ui
