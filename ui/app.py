@@ -27,6 +27,155 @@ st.set_page_config(
     page_icon="🩺",
     layout="wide",
 )
+PREMIUM_CSS = """
+<style>
+:root {
+    --ink: #eef4ff;
+    --muted: #9aa9c2;
+    --panel: rgba(18, 28, 48, 0.82);
+    --line: rgba(146, 177, 221, 0.18);
+    --cyan: #53d6d2;
+    --blue: #6b8cff;
+    --mint: #a5f3d0;
+}
+[data-testid="stAppViewContainer"] {
+    background:
+        radial-gradient(circle at 78% 4%, rgba(83, 214, 210, 0.11), transparent 30rem),
+        radial-gradient(circle at 8% 24%, rgba(107, 140, 255, 0.10), transparent 28rem),
+        #08111f;
+}
+[data-testid="stHeader"] {
+    background: rgba(8, 17, 31, 0.78);
+}
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #101c31 0%, #0a1425 100%);
+    border-right: 1px solid var(--line);
+}
+[data-testid="stSidebar"] > div:first-child {
+    padding-top: 2rem;
+}
+.block-container {
+    max-width: 1380px;
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+}
+.hero-card {
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 2.25rem;
+    border: 1px solid rgba(139, 190, 255, 0.24);
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(22, 44, 75, 0.96), rgba(15, 26, 49, 0.88));
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+.hero-card::after {
+    content: "";
+    position: absolute;
+    width: 18rem;
+    height: 18rem;
+    right: -7rem;
+    top: -8rem;
+    border-radius: 50%;
+    background: rgba(83, 214, 210, 0.14);
+    filter: blur(3px);
+}
+.hero-kicker {
+    color: var(--cyan);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+}
+.hero-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.hero-title {
+    margin-top: 0.35rem;
+    color: var(--ink);
+    font-size: clamp(2.5rem, 6vw, 4.8rem);
+    font-weight: 850;
+    letter-spacing: -0.065em;
+    line-height: 0.98;
+}
+.hero-title span {
+    color: var(--cyan);
+}
+.hero-subtitle {
+    max-width: 45rem;
+    margin-top: 0.8rem;
+    color: var(--muted);
+    font-size: 1.02rem;
+    line-height: 1.55;
+}
+.hero-badge, .model-pill {
+    position: relative;
+    z-index: 1;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid rgba(165, 243, 208, 0.30);
+    border-radius: 999px;
+    background: rgba(165, 243, 208, 0.09);
+    color: var(--mint);
+    font-size: 0.78rem;
+    font-weight: 750;
+    white-space: nowrap;
+}
+.section-label {
+    margin-top: 1.6rem;
+    color: var(--ink);
+    font-size: 1.25rem;
+    font-weight: 750;
+}
+.helper-copy {
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+[data-testid="stTextArea"] textarea {
+    border: 1px solid rgba(139, 190, 255, 0.22);
+    border-radius: 16px;
+    background: rgba(8, 17, 31, 0.72);
+    color: var(--ink);
+}
+[data-testid="stTextArea"] textarea:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 1px var(--cyan);
+}
+div.stButton > button[kind="primary"] {
+    min-height: 3.25rem;
+    border: 1px solid rgba(165, 243, 208, 0.38);
+    border-radius: 14px;
+    background: linear-gradient(100deg, #2aa9a7, #607cf1);
+    color: white;
+    font-size: 1rem;
+    font-weight: 800;
+    box-shadow: 0 12px 28px rgba(61, 125, 212, 0.28);
+}
+div.stButton > button[kind="primary"]:hover {
+    border-color: white;
+    background: linear-gradient(100deg, #38c9c1, #7890ff);
+    transform: translateY(-1px);
+}
+[data-testid="stMetric"], [data-testid="stAlert"], [data-testid="stExpander"] {
+    border-radius: 16px;
+}
+[data-testid="stMetric"] {
+    border: 1px solid var(--line);
+    background: var(--panel);
+}
+[data-testid="stExpander"] {
+    border: 1px solid var(--line);
+    background: rgba(14, 25, 44, 0.68);
+}
+[data-testid="stCaptionContainer"] {
+    color: var(--muted);
+}
+footer {
+    visibility: hidden;
+}
+</style>
+"""
+st.markdown(PREMIUM_CSS, unsafe_allow_html=True)
 
 MODEL_CONFIG = {
     "Qwen3-4B base": {
@@ -73,7 +222,7 @@ def get_runtime(model_id: str, adapter_dir: str | None, index_dir: str) -> Trans
 
 def available_models() -> list[str]:
     result = []
-    cloud_allowed = {"Qwen3-4B base", "Qwen3-4B SFT · 100k"}
+    cloud_allowed = {"Qwen3-4B SFT · 100k"}
     for label, config in MODEL_CONFIG.items():
         if CLOUD_MODE and label not in cloud_allowed:
             continue
@@ -112,18 +261,58 @@ def load_examples() -> list[str]:
     return result[:16]
 
 
-st.title(APP_NAME)
-st.caption(
-    "A local English→German healthcare-information translation assistant. "
-    "Administrative support only; human review is required."
+ACTIVE_BADGE = (
+    "Qwen3-4B · 100k SFT adapter"
+    if CLOUD_MODE
+    else "Research comparison workspace"
+)
+st.markdown(
+    f"""
+    <div class="hero-card">
+        <div class="hero-kicker">MEDICAL INFORMATION · ENGLISH → GERMAN</div>
+        <div class="hero-row">
+            <div>
+                <div class="hero-title">Medi<span>Lingo</span></div>
+                <div class="hero-subtitle">
+                    A focused translation assistant for healthcare information.
+                    Preserve terminology, numbers, dosage, warnings, and negation
+                    while keeping a human reviewer in the loop.
+                </div>
+            </div>
+            <div class="hero-badge">{ACTIVE_BADGE}</div>
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+st.markdown(
+    '<div class="section-label">Translate any healthcare text</div>',
+    unsafe_allow_html=True,
+)
+st.markdown(
+    '<div class="helper-copy">Examples are optional. Choose a starter example '
+    "or paste your own sentence, paragraph, or document excerpt below.</div>",
+    unsafe_allow_html=True,
 )
 
 with st.sidebar:
-    st.header("MediLingo controls")
-    model_label = st.selectbox("Model", available_models())
+    st.markdown("### MediLingo controls")
+    st.caption("English → German · healthcare-information workflow")
+    if CLOUD_MODE:
+        model_label = "Qwen3-4B SFT · 100k"
+        st.markdown(
+            '<div class="model-pill">Active model · Qwen3-4B 100k SFT</div>',
+            unsafe_allow_html=True,
+        )
+    else:
+        model_label = st.selectbox("Model", available_models())
     indexes = available_indexes()
     memory_label = st.selectbox("Evidence memory", list(indexes))
-    rag_enabled = st.checkbox("Use local evidence retrieval", value=True)
+    rag_enabled = st.checkbox(
+        "Use local evidence (optional)",
+        value=True,
+        help="Turn this off to translate free-form text without retrieved examples or glossary terms.",
+    )
     entity_filter = st.checkbox(
         "Block conflicting medicine evidence",
         value=True,
@@ -147,20 +336,21 @@ with st.sidebar:
     )
     st.divider()
     st.info(
-        "MediLingo uses only local model weights, a local translation memory, "
-        "and a local terminology glossary. It does not browse the internet "
-        "or provide clinical recommendations."
+        "Local model weights and local evidence only. No web browsing and no clinical recommendations. "
+        "Human review is required."
     )
 
 examples = load_examples()
-selected_example = st.selectbox("Load a healthcare example", ["(custom)"] + examples)
-default_text = "" if selected_example == "(custom)" else selected_example
+example_options = ["No example — write your own"] + examples
+selected_example = st.selectbox("Optional starter example", example_options)
+default_text = "" if selected_example == example_options[0] else selected_example
 source_text = st.text_area(
-    "English healthcare-information text",
+    "English text to translate",
     value=default_text,
-    height=180,
-    placeholder="Enter an English medication-information sentence or paragraph.",
+    height=190,
+    placeholder="Paste any English healthcare-information sentence or paragraph.",
 )
+st.caption("Free-form input is supported — you do not need to select an example.")
 
 translate_clicked = st.button("Translate with MediLingo", type="primary", use_container_width=True)
 
@@ -261,7 +451,4 @@ if translate_clicked:
             st.exception(exc)
 
 st.divider()
-st.caption(
-    "MediLingo research prototype: compare Base → SFT → SFT + local evidence "
-    "using ChrF, terminology, number/unit preservation, and human review."
-)
+st.caption("MediLingo · Qwen3-4B 100k SFT · optional local evidence · human review required.")
