@@ -1,6 +1,6 @@
 # MediLingo: The Simple Story Behind the Project
 
-## Interview study guide for healthcare translation, SFT, LoRA, RAG, evaluation, GRPO, and distillation
+## Plain-language study guide for healthcare translation, SFT, LoRA, RAG, evaluation, GRPO, and distillation
 
 Date of this snapshot: 5 August 2026
 
@@ -20,7 +20,7 @@ Whenever you feel lost, return to this picture:
 
 The computer version of this office is MediLingo.
 
-The most important sentence to remember for an project discussion is:
+The most important sentence to remember for a project discussion is:
 
 > I built a local English-to-German healthcare-information translation assistant. I first adapted small open models with supervised examples, then added a local translation memory and glossary. I evaluated base, fine-tuned, and retrieval-assisted versions on both an in-domain medical test set and a separate EMEA set, while checking details such as medicine names, numbers, dosage, units, warnings, and negation.
 
@@ -116,7 +116,7 @@ MediLingo is not intended to:
 - replace a pharmacist, doctor, or professional translator;
 - provide medical advice without review.
 
-This distinction is important in an project discussion. The interesting research problem is reliable specialized language processing. The system is not being presented as clinically autonomous.
+This distinction is important when presenting the project. The interesting research problem is reliable specialized language processing. The system is not being presented as clinically autonomous.
 
 ## Why local execution matters
 
@@ -333,7 +333,7 @@ SFT gives a clear baseline:
 - the data has explicit reference translations;
 - debugging is straightforward;
 - improvements can be attributed to the examples;
-- it is easier to explain in an project discussion.
+- it is easier to explain to collaborators.
 
 That is why MediLingo does not jump immediately to GRPO. A clean SFT and RAG baseline is the foundation for any later RL experiment.
 
@@ -375,7 +375,7 @@ Benefits:
 
 ## What is LoRA?
 
-LoRA stands for Low-Rank Adaptation. You do not need to explain the matrix mathematics in an project discussion unless asked.
+LoRA stands for Low-Rank Adaptation. You do not need to explain the matrix mathematics in a research discussion unless asked.
 
 The practical idea is:
 
@@ -430,7 +430,7 @@ Gemma 4 E2B was used as a controlled second-model comparison. We used the same g
 
 The Gemma run exposed a useful engineering lesson. A generic PEFT target search reached multimodal wrapper modules such as `Gemma4ClippableLinear`, and the first smoke test failed. The trainer was changed to select native `torch.nn.Linear` projections in the language tower. The one-step smoke test then passed, followed by the full pilot.
 
-Interview lesson:
+Engineering lesson:
 
 > A new open model is not plug-and-play. Model architecture details matter, especially when a model includes multimodal or wrapper modules.
 
@@ -443,7 +443,7 @@ MediLingo uses standard Transformers, PEFT, and Accelerate because:
 - the training logic is easier to inspect;
 - the project does not depend on one optimization library;
 - the Thor ARM/CUDA software stack should remain stable;
-- the goal is a reproducible project discussion project rather than squeezing out the last speed improvement.
+- the goal is a reproducible research project rather than squeezing out the last speed improvement.
 
 Unsloth could be tested later as an engineering comparison. It should not be described as the reason the model learned medical translation.
 
@@ -778,7 +778,7 @@ A good UI for an AI research system should not hide uncertainty. It should show 
 
 ## Why Streamlit?
 
-Streamlit is a quick way to turn Python code into a local interactive demo. It is not the final production architecture, but it is ideal for an project discussion because the evaluator can type a sentence and see the entire pipeline.
+Streamlit is a quick way to turn Python code into a local interactive demo. It is not the final production architecture, but it is ideal for a research demonstration because a reviewer can type a sentence and see the entire pipeline.
 
 ## Why Docker?
 
@@ -874,7 +874,7 @@ Second, a strong reasoning model can act like a senior reviewer or teacher. It m
 - generate demonstrations for a smaller student;
 - provide a reward signal for an RL experiment.
 
-A safe project discussion sentence is:
+A safe project-summary sentence is:
 
 > A model such as DeepSeek R1 can be either a baseline translator or a teacher/judge in a training pipeline. I would check the exact paper code before claiming which role it played in a particular experiment.
 
@@ -989,7 +989,7 @@ GRPO would make this project much larger:
 - we would need multiple candidates per input;
 - we would need to validate a judge or reward model;
 - training would be more expensive and less predictable;
-- there would be many more knobs to explain in an project discussion;
+- there would be many more knobs to explain in a research discussion;
 - we would need stronger human evaluation to trust the result.
 
 The sensible sequence is:
@@ -1000,7 +1000,7 @@ The sensible sequence is:
 4. collect failure cases;
 5. only then design a small, well-motivated GRPO experiment.
 
-Interview answer:
+Research discussion answer:
 
 > GRPO is relevant to the group's research, but I intentionally did not add it before stabilizing the healthcare SFT and RAG baseline. Otherwise I would not know whether an improvement came from better data, retrieval, prompt changes, or reinforcement learning.
 
@@ -1062,7 +1062,7 @@ Distillation would add:
 
 It could be a good future project, especially if the goal is to make a local model smaller or faster. It is not necessary to answer the first research question: can a small open model learn useful specialized translation with SFT and local evidence?
 
-Interview answer:
+Research discussion answer:
 
 > Distillation is a sensible future efficiency experiment, but I would first establish that the 100k SFT and RAG baseline is reliable. Then I could use a stronger teacher to create carefully filtered preference or translation examples and test whether the smaller model preserves quality at lower cost.
 
@@ -1335,7 +1335,7 @@ Say:
 
 # Part 16 - Your earlier healthcare NLP work and how it fits
 
-The earlier medical-prescription administration and information project is useful in the project discussion because it shows that your interest in healthcare NLP did not begin with this one experiment.
+The earlier medical-prescription administration and information project is useful when presenting the work because it shows that your interest in healthcare NLP did not begin with this one experiment.
 
 A safe way to connect the projects is:
 
@@ -1347,7 +1347,7 @@ A safe way to connect the projects is:
 
 Do not invent technical details about the earlier project if you cannot explain the exact code or dataset. Say what you personally implemented, what the input and output were, and what limitation you found.
 
-A good project discussion bridge is:
+A good project bridge is:
 
 > My earlier healthcare NLP work made me interested in extracting and organizing medically relevant information. MediLingo extends that interest toward multilingual generation: the system translates healthcare information, retrieves approved terminology, and checks whether safety-critical details survived. The common theme is using NLP to support administrative healthcare work while keeping humans in control.
 
@@ -1494,7 +1494,7 @@ The 100k run writes separate artifacts and does not overwrite the 50k adapter or
 
 ---
 
-# Appendix B - Questions to ask yourself before the project discussion
+# Appendix B - Questions to ask yourself before discussing the project
 
 1. What problem does the system solve?
 2. Why is a fluent translation not enough in healthcare?
@@ -1526,14 +1526,14 @@ A strong answer to the final question is:
 
 # Appendix C - References discussed while designing the project
 
-These are the main public resources connected to the project and project preparation:
+These are the main public resources connected to the project and research preparation:
 
 - Ahazeemi English-German medical data: https://huggingface.co/datasets/ahazeemi/opus-medical-en-de
 - OPUS EMEA corpus: https://opus.nlpl.eu/datasets/EMEA
 - EMEA Hugging Face fallback/repackage: https://huggingface.co/datasets/qanastek/EMEA-V3
 - Swiss legal translation model/repository: https://huggingface.co/iCoSys-HEIA/Qwen3.5-4b-Swiss-Legal-Translation
 - Unsloth efficiency toolkit: https://github.com/unslothai/unsloth
-- Legal-translation paper discussed in the project preparation: https://arxiv.org/pdf/2607.19226v1
+- Legal-translation paper discussed during project preparation: https://arxiv.org/pdf/2607.19226v1
 - Earlier healthcare NLP project: https://www.omdena.com/chapter-challenges/leveraging-nlp-in-medical-prescription-administration-and-information
 
 Use the paper and repository links to verify exact experimental details before making a precise claim about a particular reward model, judge model, or training stage. The conceptual explanations in this guide are designed to make the ideas understandable and evidence-safe; the source paper remains the authority for exact implementation details.

@@ -146,7 +146,7 @@ The project keeps Hugging Face and Torch caches under .cache. No system-wide pac
 The project UI is a Streamlit app in ui/app.py. It offers:
 
 - English input and English-to-German selection.
-- Qwen3 or Gemma 4 base/SFT model selection when the adapter exists.
+- Local research mode can compare Qwen3 and Gemma 4 base/SFT adapters; the public Cloud Run demo presents only the Qwen3-4B 100k SFT adapter.
 - RAG on/off, translation-memory choice, top-k control, and minimum similarity threshold.
 - A switch to block conflicting medicine/entity evidence before it reaches the model.
 - Translation output.
@@ -165,7 +165,7 @@ The local Docker image is medilingo:local. It contains both LoRA adapters, uses 
 
 The public MediLingo demo is deployed and verified at https://medilingo-osqskujnua-ez.a.run.app. It uses Cloud Run Gen2 in project `retailmind-497115` and region `europe-west4`, with one NVIDIA L4 GPU, 4 vCPUs, and 16 GiB RAM. The service is public, capped at one instance, and configured with zero minimum instances so it scales down when idle. Streamlit uses concurrency 80 so its parallel static assets load correctly. The first request after scale-to-zero can take several minutes while the image and Qwen3 model initialize. Production use would still need authentication, audit logging, request limits, data retention controls, and human review.
 
-## Interview framing
+## Project framing
 
 A defensible summary is:
 

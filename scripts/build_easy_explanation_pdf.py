@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import html
+import os
 import re
 from pathlib import Path
 
@@ -25,7 +26,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SOURCE = PROJECT_ROOT / "docs/MediLingo_Easy_Explanation_Guide.md"
 OUTPUT = PROJECT_ROOT / "output/pdf/MediLingo_Easy_Explanation_Guide.pdf"
 
-FONT_DIR = Path("/usr/share/fonts/truetype/dejavu")
+FONT_DIR = Path(os.environ.get("MEDILINGO_FONT_DIR", "/usr/share/fonts/truetype/dejavu"))
 pdfmetrics.registerFont(TTFont("MediLingoSans", str(FONT_DIR / "DejaVuSans.ttf")))
 pdfmetrics.registerFont(TTFont("MediLingoSans-Bold", str(FONT_DIR / "DejaVuSans-Bold.ttf")))
 pdfmetrics.registerFont(TTFont("MediLingoSans-Oblique", str(FONT_DIR / "DejaVuSans-Oblique.ttf")))
@@ -372,7 +373,7 @@ def main():
         bottomMargin=BOTTOM,
         title="MediLingo: The Simple Story Behind the Project",
         author="MediLingo project",
-        subject="Plain-language project guide for healthcare translation research",
+        subject="Plain-language research guide for healthcare translation",
         allowSplitting=1,
     )
     document.build(story, onFirstPage=footer, onLaterPages=footer)

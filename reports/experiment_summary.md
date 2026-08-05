@@ -94,7 +94,7 @@ The original 50-example pilot remains above for reproducibility. The following r
 | SFT | 68.61 | 43.14 | 0.953 | 0.865 | 0.690 | 0% | 0 | 1.901 |
 | SFT + gated RAG | 73.73 | 52.10 | 0.948 | 0.863 | 0.685 | 98.5% | 3,288 | 2.033 |
 
-The gate is simple enough to explain in an project discussion: retrieve several candidates, reject a candidate mentioning a conflicting product/entity, reject weak matches below the threshold, and let the model translate without a translation-memory example when no safe evidence remains. The 100k Qwen adapter is intentionally being evaluated separately rather than replacing these baselines.
+The gate is simple enough to explain in a research discussion: retrieve several candidates, reject a candidate mentioning a conflicting product/entity, reject weak matches below the threshold, and let the model translate without a translation-memory example when no safe evidence remains. The 100k Qwen adapter is intentionally being evaluated separately rather than replacing these baselines.
 
 ## What the results mean
 
@@ -103,9 +103,9 @@ The gate is simple enough to explain in an project discussion: retrieve several 
 - RAG is not guaranteed to improve every in-domain slice; Gemma test RAG is a useful counterexample.
 - Gemma has stronger base and external scores here, but the result is only a 50-row pilot and not a claim that Gemma is universally better.
 - The safety-relevant fidelity heuristics are not a substitute for expert review.
-- The main research contribution for an project discussion is the controlled comparison and the failure analysis, not a claim of beating a research group.
+- The main research contribution is the controlled comparison and the failure analysis, not a claim of beating a research group.
 
-## Interview demo
+## Project demonstration
 
 Use three short examples:
 
