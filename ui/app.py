@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -15,6 +16,11 @@ from runtime import TranslationRuntime  # noqa: E402
 
 
 APP_NAME = "MediLingo"
+QWEN_MODEL_ID = (
+    os.environ.get("MEDILINGO_BASE_MODEL_DIR", "Qwen/Qwen3-4B").strip()
+    or "Qwen/Qwen3-4B"
+)
+CLOUD_MODE = os.environ.get("MEDILINGO_CLOUD", "").lower() in {"1", "true", "yes"}
 
 st.set_page_config(
     page_title=APP_NAME,
@@ -24,15 +30,15 @@ st.set_page_config(
 
 MODEL_CONFIG = {
     "Qwen3-4B base": {
-        "model_id": "Qwen/Qwen3-4B",
+        "model_id": QWEN_MODEL_ID,
         "adapter": None,
     },
     "Qwen3-4B SFT · 50k": {
-        "model_id": "Qwen/Qwen3-4B",
+        "model_id": QWEN_MODEL_ID,
         "adapter": PROJECT_ROOT / "models/qwen3-4b-medical-lora",
     },
     "Qwen3-4B SFT · 100k": {
-        "model_id": "Qwen/Qwen3-4B",
+        "model_id": QWEN_MODEL_ID,
         "adapter": PROJECT_ROOT / "models/qwen3-4b-medical-lora-100k",
     },
     "Gemma 4 E2B base": {
@@ -67,7 +73,10 @@ def get_runtime(model_id: str, adapter_dir: str | None, index_dir: str) -> Trans
 
 def available_models() -> list[str]:
     result = []
+    cloud_allowed = {"Qwen3-4B base", "Qwen3-4B SFT · 100k"}
     for label, config in MODEL_CONFIG.items():
+        if CLOUD_MODE and label not in cloud_allowed:
+            continue
         adapter = config["adapter"]
         if label.endswith("50k") or label.endswith("100k") or label.endswith("SFT"):
             if adapter is None or not Path(adapter).exists():

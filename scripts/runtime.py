@@ -27,7 +27,11 @@ class RetrievalIndex:
         self.glossary: list[dict[str, Any]] = []
         self.encoder = None
         self.embedding_model_name = (
-            "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+            os.environ.get(
+                "MEDILINGO_EMBEDDING_MODEL_DIR",
+                "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+            ).strip()
+            or "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
         )
         self._load_metadata()
 

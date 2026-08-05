@@ -1,0 +1,61 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+ENV PYTHONUNBUFFERED=1 \
+    STREAMLIT_SERVER_HEADLESS=true \
+    STREAMLIT_SERVER_ADDRESS=0.0.0.0 \
+    STREAMLIT_SERVER_PORT=8080 \
+    HF_HOME=/tmp/huggingface \
+    TRANSFORMERS_CACHE=/tmp/huggingface/transformers \
+    TOKENIZERS_PARALLELISM=false \
+    HF_HUB_DISABLE_TELEMETRY=1
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends ca-certificates libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements-runtime-gpu.txt .
+
+# Cloud Run GPU instances are x86_64. Cloud Build installs the CUDA-enabled
+# wheel; Thor's ARM64 local image is intentionally not reused for deployment.
+RUN python -m pip install --no-cache-dir --upgrade pip \
+    && python -m pip install --no-cache-dir \
+        --index-url https://download.pytorch.org/whl/cu126 \
+        "torch==2.7.1" \
+    && python -m pip install --no-cache-dir -r requirements-runtime-gpu.txt
+
+# Bake public model assets into the image. This removes the HF download from
+# the first user request. No access token is stored in the image.
+RUN python - <<'PY'
+from huggingface_hub import snapshot_download
+
+snapshot_download(
+    repo_id="Qwen/Qwen3-4B",
+    local_dir="/opt/models/qwen3-4b",
+    allow_patterns=["*.json", "*.jinja", "*.safetensors", "*.txt"],
+)
+snapshot_download(
+    repo_id="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    local_dir="/opt/models/embedding",
+)
+PY
+
+COPY scripts ./scripts
+COPY ui ./ui
+COPY config ./config
+COPY artifacts/rag_100k ./artifacts/rag_100k
+COPY artifacts/examples.json ./artifacts/examples.json
+COPY models/qwen3-4b-medical-lora-100k ./models/qwen3-4b-medical-lora-100k
+
+ENV MEDILINGO_CLOUD=1 \
+    MEDILINGO_BASE_MODEL_DIR=/opt/models/qwen3-4b \
+    MEDILINGO_EMBEDDING_MODEL_DIR=/opt/models/embedding \
+    RAG_INDEX_DIR=/app/artifacts/rag_100k
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=180s --retries=3 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/_stcore/health', timeout=4)"
+
+EXPOSE 8080
+
+CMD ["streamlit", "run", "ui/app.py", "--server.address=0.0.0.0", "--server.port=8080"]
